@@ -1,34 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Home from './pages/Home'
+import ProductList from './pages/ProductList'
+import ProductDetails from './pages/ProductDetail'
+import Login from './pages/Admin/Login'
+import EditProduct from './pages/CRUD/EditProduct'
+import Order from './pages/Order'
+import Admin from './pages/Admin/Admin'
+import AddProduct from './pages/CRUD/AddProduct'
+import UserOrders from './pages/OrderDetail'
+import RootLayout from './layouts/RootLayout'
+import DeleteProduct from './pages/CRUD/DeleteProduct'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  // Login
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <RootLayout />,
+      children: [
+        {
+          index: true,
+          element: <Home />
+        },
+        {
+          path: 'productlist',
+          element: <ProductList />
+        },
+        {
+          path: 'addProduct',
+          element: <AddProduct />
+        },
+        {
+          path: 'productList/:id',
+          element: <ProductDetails />
+        },
+        {
+          path: 'login',
+          element: <Login />
+        },
+        {
+          path: 'editProduct',
+          element: <EditProduct />
+        },
+        {
+          path: 'deleteProduct',
+          element: <DeleteProduct />
+        },
+        {
+          path: 'orders',
+          element: <Order />
+        },
+        {
+          path: 'admin',
+          element: <Admin />
+        }
+      ]
+    }
+  ])
+
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   )
 }
 
