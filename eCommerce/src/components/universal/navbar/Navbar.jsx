@@ -1,26 +1,55 @@
 import React from 'react'
-import { Dropdown } from 'react-bootstrap';
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-import '../../../scss/components.scss'
+// import Logo from '../../../images/logo/logo.svg'
+import './navbar.scss'
+// import {FiSearch} from 'react-icons/fi'
+// import { FaShoppingCart } from 'react-icons/fa'
+// import SearchModal from './search/SearchModal'
+// import { clearUser } from '../../../app/action'
+// import { useDispatch, useSelector } from 'react-redux'
 
-const Navbar = () => {
+
+const Navbar = ({ products, isLoggedIn, setIsLoggedIn}) => {
+//   const navigate = useNavigate();
+//   const dispatch = useDispatch();
+
+
+  // const handleLogout = () => {
+  //   setIsLoggedIn(false); // set isLoggedIn to false on logout
+  //   localStorage.clear()
+  //   navigate('/login');
+  //   dispatch(clearUser())
+  // };
+
   return (
-    <nav className='navbar'>
-      <ul>
-        <li><NavLink className='nav-link' to='/'>Home</NavLink></li>
-        <li><NavLink className='nav-link' to='/productlist'>Products</NavLink></li>
-        <li><NavLink className='nav-link' to='/login'>Login</NavLink></li>
-        <div className="crudnavdiv">
-          <li><NavLink className='nav-link' to='/addproduct'>Add Product</NavLink></li>
-          <li><NavLink className='nav-link' to='/editproduct'>Edit Product</NavLink></li>
-          <li><NavLink className='nav-link' to='/deleteproduct'>Delete Product</NavLink></li>
+    <>
+      <nav className='navbar'>
+        <div className="logo">
+          {/* <Link to='/' ><img src={Logo} alt="" /></Link> */}
         </div>
-        <div className='orderdiv'>
-          <li><NavLink className='nav-link' to='/orders'>Orders</NavLink></li>
-        </div>
-      </ul>
-    </nav>
-  )
-}
+        <ul>
+          <li><NavLink className='nav-link' to='/'>Home</NavLink></li>
+          <li><NavLink className='nav-link' to='/products'>Products</NavLink></li>
+          <li><NavLink className='nav-link' to='/addProduct'>Add-Products</NavLink></li>
+          {/* <li><FiSearch className='opacity height' /></li> */}
+          {/* <SearchModal key={products._id} products={products} /> */}
+          {isLoggedIn ? ( // show the logout button if the user is logged in
+            <>
+              <li><NavLink className='nav-link lowercase opacity' to='/userprofile'>user</NavLink></li>
+              <li><NavLink className='nav-link lowercase opacity' to='/login' >Logout</NavLink></li>
+            </>
+          ) : ( // show the login button if the user is logged out
+            <>
+              <li><NavLink className='nav-link lowercase opacity' to='/login'>Login</NavLink></li>
+            </>
+          )}
 
-export default Navbar
+        </ul>
+      </nav>
+    </>
+  );
+};
+
+export default Navbar;
+
+

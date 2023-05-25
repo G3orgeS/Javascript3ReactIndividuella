@@ -1,0 +1,11 @@
+Här kommer du att behöva fundera ut själv vilka 
+sidor som kan behövas för att lösa uppgiften. 
+Tänk på att det är eran gemensamma backend lösning 
+som ni har i gruppen som ska användas. Därför kan det 
+vara bra att redan från start gemensamt bygga iordning 
+eran backend för att fungera med ett sådant här system.
+
+Skulle du behöva någon ändring i systemet så får du ta 
+upp det med gruppen och ni får göra ett gemensamt beslut 
+om detta är okej eller inte.
+

@@ -1,0 +1,13 @@
+Alla routes ska vara skyddade så att man blir omdirigerad 
+till en login / start sida om man inte är inloggad.
+
+Man ska som inloggad administratör kunna se alla 
+ordrar från alla användare i en lista.
+
+Man ska kunna se detaljer om en 
+enskild order på en separat sida.
+
+Man ska kunna ändra orderstatus på en order 
+från tex: "pending" till "in transit" eller liknande.
+
+Du ska ha minst ett enkelt enhetstest.

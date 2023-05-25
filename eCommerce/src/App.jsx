@@ -1,67 +1,113 @@
 import React from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Home from './pages/Home'
-import ProductList from './pages/ProductList'
-import ProductDetails from './pages/ProductDetail'
-import Login from './pages/Admin/Login'
-import EditProduct from './pages/CRUD/EditProduct'
-import Order from './pages/Order'
-import Admin from './pages/Admin/Admin'
-import AddProduct from './pages/CRUD/AddProduct'
-import UserOrders from './pages/OrderDetail'
+import { getProducts } from './store/products/productsSlice'
+import Loader from './components/loader/Loader'
 import RootLayout from './layouts/RootLayout'
-import DeleteProduct from './pages/CRUD/DeleteProduct'
+import Home from './pages/Home'
+import Products from './pages/Products'
+import ProductDetails from './pages/ProductDetails'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import UserProfile from './pages/UserProfile'
+import AddProduct from './pages/AddProducts'
+import UserOrders from './pages/UserOrders'
+
 
 const App = () => {
-  // Login
 
+  // Login
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('accessToken')
+    if(loggedInUser) {
+      setIsLoggedIn(true)
+    }
+  }, [])
+
+
+  // ____________________________________________________________________________
+
+  // Sending a dispatch to get the products from FireBase
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [])
+
+  const { products, loading, error } = useSelector(state => state.products)
+  // ____________________________________________________________________________
+
+
+  // Router - sending products to the pages that need them.
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <RootLayout />,
+      element: <RootLayout key={products._id} products={products} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />,
+      errorElement: <Error />,
       children: [
+        {
+          index: true,
+          element: <>{
+            products.length > 0
+              ? <Home key={products._id} products={products} />
+              : <h2>No products to show</h2>
+          }</>
+
+        },
         {
           index: true,
           element: <Home />
         },
         {
-          path: 'productlist',
-          element: <ProductList />
+          path: 'products',
+          element: <>{
+            products.length > 0
+              ? <Products key={products.id} products={products} />
+              : <h2>No products to show</h2>
+          }</>
+        },
+        {
+          path: 'productDetails/:id',
+          element: <>{
+            products.length > 0
+              ? <ProductDetails key={products.id} products={products} />
+              : <h2>No products to show</h2>
+          }</>
         },
         {
           path: 'addProduct',
-          element: <AddProduct />
+          element: <AddProduct />,
         },
-        {
-          path: 'productList/:id',
-          element: <ProductDetails />
-        },
+
         {
           path: 'login',
-          element: <Login />
+          element: <Login setIsLoggedIn={setIsLoggedIn} />
         },
         {
-          path: 'editProduct',
-          element: <EditProduct />
+          path: 'userprofile',
+          element: <UserProfile />
         },
         {
-          path: 'deleteProduct',
-          element: <DeleteProduct />
+          path: 'userorders',
+          element: <UserOrders />
         },
         {
-          path: 'orders',
-          element: <Order />
+          path: 'register',
+          element: <Register />
         },
+
         {
-          path: 'admin',
-          element: <Admin />
-        }
+          path: 'products',
+          element: <Products />
+
+        },
+       
       ]
     }
   ])
-
 
   return (
     <>
