@@ -13,7 +13,8 @@ import Register from './pages/Register'
 import UserProfile from './pages/UserProfile'
 import AddProduct from './pages/AddProducts'
 import UserOrders from './pages/UserOrders'
-
+import EditProduct from './pages/EditProduct'
+import DeleteProduct from './pages/DeleteProduct'
 
 const App = () => {
 
@@ -104,7 +105,24 @@ const App = () => {
           element: <Products />
 
         },
-       
+        {
+          path: 'editproduct/:id',
+          element: <>{
+            products.length > 0
+              ? <EditProduct key={products.id} products={products} />
+              : <h2>No products to show</h2>
+          }</>
+        },
+        {
+          path: 'deleteproduct/:id',
+          element: <>{
+            products.length > 0
+              ? <DeleteProduct key={products.id} products={products} />
+              : <h2>No products to show</h2>
+          }</>
+        },
+        //   <NavLink to={`/editproduct/${product.id}`}><FiEdit2 className='editstyle'/></NavLink>
+        // <NavLink to={`/deleteproduct/${product.id}`}><FiDelete className='deletestyle' /></NavLink>       
       ]
     }
   ])

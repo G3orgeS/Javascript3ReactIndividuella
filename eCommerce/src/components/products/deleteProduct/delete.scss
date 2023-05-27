@@ -1,0 +1,13 @@
+.DeleteBtnWrap {
+    display: flex;
+    justify-content: center;
+    height: 15vh;
+    align-content: center;
+    flex-wrap: wrap;
+    
+    :hover {
+        cursor: pointer;
+        background-color: red;
+        color: white;
+    }
+}

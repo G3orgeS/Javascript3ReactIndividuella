@@ -13,8 +13,7 @@
     align-items: center;
     gap: 0.5rem;
     :hover {
-        background-color: darkgrey;
-        color: black;
+        color: white;
         cursor: pointer;
     }
 }
@@ -47,7 +46,16 @@ a{
 }
 .titelcontainerstyle {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding-right: 1rem;
     gap: 1rem;
+    width: 35rem;
+}
+.deletestyle {
+    height: 2rem;
+    width: 2rem;
+}
+.editstyle {
+    height: 2rem;
+    width: 2rem;
 }

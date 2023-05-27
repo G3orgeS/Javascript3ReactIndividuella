@@ -53,22 +53,20 @@ const Formforlogin = ({ handleLogin }) => {
   };
 
   return (
-    <div className='form-login-wrapper'>
-      <div className="form-login-container">
+    <div className='center'>
+      <div className="addProductform">
         <Form onSubmit={submitLogin}>
-          <h4>Please Login to Your Account</h4>
+          <h4>Logga in admin</h4>
           <div className="input-group-login d-flex-form">
-            <label className='form-label-link' htmlFor="email">E-mail* <Link className='form-link-register-padding' to='/register'>Don't have an Account yet?</Link></label>
+            <label className='form-label-link' htmlFor="email">E-mail* </label>
             <input type="email" name="email" id="email" className='input-login' value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="input-group-login d-flex-form">
-            <label htmlFor="password" className='form-label-link-two'>Password* <Link to='/forgotpassword' className='form-link-register-padding'>Forgot your password?</Link></label>
+            <label htmlFor="password" className='form-label-link-two'>Password* </label>
             <input type="password" name="password" id="password" className='input-login' value={password} onChange={(e) => setPassword(e.target.value)} />
           </div>
-          <div>
-            <input className='login-checkbox' type="checkbox" name="" id="" />
-          </div>
-          <Formbtn />
+
+          <Formbtn/>
         </Form>
       </div>
     </div>
