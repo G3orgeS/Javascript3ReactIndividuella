@@ -6,58 +6,46 @@
     width: 60%;
     margin: auto;
 }
-
 .logo img {
     width: 8rem;
 }
-
 .navbar ul {
     list-style: none;
     display: flex;
     gap: 1.5rem;
     align-items: center;
 }
-
 .navbar ul .nav-link {
     font-size: .7rem;
     text-transform: uppercase;
     text-decoration: none;
     color: black;
 }
-
 .navbar ul li .lowercase {
     text-transform: capitalize;
     opacity: .5;
 }
-
 .cart {
     font-size: .9rem;
     opacity: .3;
 }
-
 .opacity {
     opacity: .2;
 }
-
 .navbar ul li {
     display: flex;
     align-items: center;
 
 }
-
 .height {
     font-size: .8rem;
     opacity: .3;
 }
-
 .cart {
     font-size: 1.4rem;
 }
-
 .cartss {
     position: relative;
-
-
     p {
         position: absolute;
         top: -7px;

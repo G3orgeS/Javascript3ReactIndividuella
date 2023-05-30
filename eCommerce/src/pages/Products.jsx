@@ -1,22 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import LargeGrid from '../components/products/productGrid/largeGrid/LargeGrid'
-// import GridMenu from '../components/products/productGrid/gridMenu/GridMenu'
-// import WideHero from '../components/universal/wideHero/WideHero'
-// import SpecialOffersWide from '../components/products/specialOffersWide/SpecialOffersWide'
-
+import { useDispatch } from 'react-redux'
+import { getProducts } from '../store/products/productsSlice'
 
 function Products({ products }) {
 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [])
+
   return (
     <>
-    {/* <WideHero /> */}
-    {/* <GridMenu /> */}
-    { 
-      products.length > 0
+      {
+        products.length > 0
           ? <LargeGrid key={products._id} products={products} />
           : <h2>No products to show</h2>
-        }
-    {/* <SpecialOffersWide /> */}
+      }
     </>
   )
 }

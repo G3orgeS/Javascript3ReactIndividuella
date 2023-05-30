@@ -18,20 +18,15 @@ import DeleteProduct from './pages/DeleteProduct'
 
 const App = () => {
 
-  // Login
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem('accessToken')
-    if(loggedInUser) {
+    if (loggedInUser) {
       setIsLoggedIn(true)
     }
   }, [])
 
-
-  // ____________________________________________________________________________
-
-  // Sending a dispatch to get the products from FireBase
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -39,10 +34,7 @@ const App = () => {
   }, [])
 
   const { products, loading, error } = useSelector(state => state.products)
-  // ____________________________________________________________________________
 
-
-  // Router - sending products to the pages that need them.
   const router = createBrowserRouter([
     {
       path: '/',
@@ -121,8 +113,6 @@ const App = () => {
               : <h2>No products to show</h2>
           }</>
         },
-        //   <NavLink to={`/editproduct/${product.id}`}><FiEdit2 className='editstyle'/></NavLink>
-        // <NavLink to={`/deleteproduct/${product.id}`}><FiDelete className='deletestyle' /></NavLink>       
       ]
     }
   ])

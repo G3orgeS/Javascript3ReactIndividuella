@@ -1,10 +1,8 @@
 .productGridTitleContainer {
     height: 4rem;
     display: flex;
-    // justify-content: flex-end;
-    // flex-direction: row-reverse;
-
 }
+
 .editanddeletediv {
     display: flex;
     height: 4rem;
@@ -12,11 +10,13 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+
     :hover {
         color: white;
         cursor: pointer;
     }
 }
+
 .test {
     display: flex;
 }
@@ -31,19 +31,20 @@ h2 {
     font-size: 1.5rem;
 }
 
-a{
+a {
     color: black;
     text-decoration: none;
+
     :hover {
         background-color: rgb(78, 78, 78);
         color: white;
-    //    padding: 0 0.1rem 0 0.1rem;
-    //    scale: 104.3%;
     }
 }
+
 .productstylebox {
     border: solid 1px black;
 }
+
 .titelcontainerstyle {
     display: flex;
     justify-content: space-between;
@@ -51,10 +52,12 @@ a{
     gap: 1rem;
     width: 35rem;
 }
+
 .deletestyle {
     height: 2rem;
     width: 2rem;
 }
+
 .editstyle {
     height: 2rem;
     width: 2rem;

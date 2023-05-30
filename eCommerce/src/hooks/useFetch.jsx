@@ -64,7 +64,6 @@ export const useFetchAmount = (url, options, amount) => {
     const fetchData = async () => {
 
       setLoading(true)
-      // setData(null)
       try {
         const res = await fetch(url, {
           ..._options,

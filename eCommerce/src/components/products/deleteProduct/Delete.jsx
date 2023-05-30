@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import './delete.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../../../firebase/config';
+import { useNavigate } from 'react-router-dom';
 
 const Delete = ({ product }) => {
-  const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(1);
+
+const dispatch = useDispatch();
+const navigate = useNavigate();
+
+const deleteproductfromdb = async () => {
+  await deleteDoc(doc(db, 'products', product.id))
+  navigate('/products')
+}
 
   return (
     <>
@@ -23,7 +32,7 @@ const Delete = ({ product }) => {
             <div className='detailsLine'></div>
             <p>Obs. Om du klickar på knappen kommer produkten raderas från databasen</p>
             <div className='DeleteBtnWrap'>
-            <button>Delete</button>
+            <button className='deletebtnstyle' onClick={deleteproductfromdb}>Delete</button>
             </div>
           </div>
         </div>
