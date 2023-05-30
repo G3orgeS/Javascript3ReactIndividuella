@@ -21,6 +21,7 @@ const Navbar = ({ products, isLoggedIn, setIsLoggedIn}) => {
           ) : ( // show the login button if the user is logged out
             <>
               <li><NavLink className='nav-link lowercase opacity' to='/login'>Login</NavLink></li>
+              <li><NavLink className='nav-link lowercase opacity' to='/register'>Register</NavLink></li>
             </>
           )}
         </ul>

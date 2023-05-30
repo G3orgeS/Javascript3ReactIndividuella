@@ -2,20 +2,21 @@
     text-align: center;
 }
 
-.editcenter {
+.center {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-.editProductform {
-    height: 100%;
-    border-radius: 1rem;
+.logincenter {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    padding: 1rem;
+}
+.addProductform {
+    width: 30rem;
+    border-radius: 1rem;
+    margin: 3rem 0rem 6rem 0rem;
+    padding: 2rem;
     box-shadow: .05rem .05rem .5rem #0000007c;
 }
 
@@ -32,15 +33,21 @@
     gap: 1rem;
 }
 
-.form-label {
+.form-label-register {
+    width: 20rem;
     font-weight: bold;
-    width: 8rem;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .addProductFormBtn {
     margin: 2rem 0rem 1rem 0rem;
-    cursor: pointer;
-    width: 10rem;
-    height: 2rem;
+}
+.centerp{ 
+    width: 20rem;
+}
+.linkstylelogin {
+    text-decoration: underline;
+    color: rgb(84, 138, 2);
 }
 

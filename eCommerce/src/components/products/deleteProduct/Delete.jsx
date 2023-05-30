@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Delete = ({ product }) => {
 
-const dispatch = useDispatch();
-const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-const deleteproductfromdb = async () => {
-  await deleteDoc(doc(db, 'products', product.id))
-  navigate('/products')
-}
+  const deleteproductfromdb = async () => {
+    await deleteDoc(doc(db, 'products', product.id))
+    navigate('/products')
+  }
 
   return (
     <>
@@ -32,7 +32,7 @@ const deleteproductfromdb = async () => {
             <div className='detailsLine'></div>
             <p>Obs. Om du klickar på knappen kommer produkten raderas från databasen</p>
             <div className='DeleteBtnWrap'>
-            <button className='deletebtnstyle' onClick={deleteproductfromdb}>Delete</button>
+              <button className='deletebtnstyle' onClick={deleteproductfromdb}>Delete</button>
             </div>
           </div>
         </div>

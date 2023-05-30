@@ -101,7 +101,7 @@ const App = () => {
           path: 'editproduct/:id',
           element: <>{
             products.length > 0
-              ? <EditProduct key={products.id} products={products} />
+              ? <EditProduct />
               : <h2>No products to show</h2>
           }</>
         },

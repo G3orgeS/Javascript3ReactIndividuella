@@ -5,7 +5,7 @@ import Loader from '../components/loader/Loader'
 import { useParams } from 'react-router-dom'
 import Edit from '../components/products/editProduct/Edit'
 
-function EditProduct({ products }) {
+function EditProduct() {
 
   const { id } = useParams()
 
@@ -19,7 +19,7 @@ function EditProduct({ products }) {
 
   return (
     <>
-    <Edit key={'detailsProductKey'} product={product} />
+      <Edit product={product} />
     </>
   )
 }

@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import './edit.scss';
 import '../../form/addProductForm/addProductForm.scss'
 import { useDispatch, useSelector } from 'react-redux';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../../firebase/config';
 
 const Edit = ({ product }) => {
   const dispatch = useDispatch();
 
   const [productData, setProductData] = useState({
-    title:            product.title,
-    category:         product.category,
-    price:            product.price,
+    title: product.title,
+    category: product.category,
+    price: product.price,
     shortDescription: product.shortDescription,
-    description:      product.description,
-    imageURL:         product.imageURL,
+    description: product.description,
+    imageURL: product.imageURL,
   });
 
   const handleChange = e => {
@@ -23,20 +25,31 @@ const Edit = ({ product }) => {
     }));
   };
 
-  const updateProductToDB = async () => {
+  const handleImageChange = (e, index) => {
+    const { value } = e.target
+    const images = productData.imageURL
+    images[index] = value
+    setProductData(form => ({
+      ...form,
+      imageURL: images
+    }))
+  }
+
+  const updateProductToDB = async (e) => {
+    e.preventDefault()
     try {
-      const docRef = doc(db, 'products', product.id); 
+      const docRef = doc(db, 'products', product.id);
 
       await updateDoc(docRef, {
-        title:              products.title,
-        category:           products.category,
-        price:              products.price,
-        shortDescription:   products.shortDescription,
-        description:        products.description,
-        imageURL:           products.imageURL,
+        title: productData.title,
+        category: productData.category,
+        price: productData.price,
+        shortDescription: productData.shortDescription,
+        description: productData.description,
+        imageURL: productData.imageURL,
       });
 
-      dispatch(updateProduct(products));
+      dispatch(updateProduct(productData));
 
 
       navigate('/productDetails/:id');
@@ -61,7 +74,7 @@ const Edit = ({ product }) => {
           <div className='text-wrapper'>
             <div className=' editProductform'>
               <h1 className='text-center'>Uppdatera Produkten</h1>
-              <form>
+              <form onSubmit={updateProductToDB}>
                 <div className="input-group">
                   <label htmlFor="name" className="form-label">Product Title:</label>
                   <input type="text" className="form-control" id='title' value={productData.title} onChange={handleChange} />
@@ -82,12 +95,15 @@ const Edit = ({ product }) => {
                   <label htmlFor="description" className="form-label">Product Description:</label>
                   <textarea className='form-control' id="description" rows="3" value={productData.description} onChange={handleChange}></textarea>
                 </div>
-                <div className="input-group">
-                  <label htmlFor="imageURL1" className="form-label">Image Url 1:</label>
-                  <input type="text" className="form-control" id='imageURL1'  onChange={(e) => setImageURL(e.target.value)} />
-                </div>
+                {productData.imageURL.map((img, index) => (
+                  <div key={index} className="input-group">
+                    <label htmlFor={"imageURL" + index + 1} className="form-label">Image Url {index + 1}:</label>
+                    <input type="text" className="form-control" id={"imageURL" + index + 1} value={productData.imageURL[index]} onChange={(e) => handleImageChange(e, index)} />
+                  </div>
+                ))
+                }
                 <div className='center'>
-                  <button className="btn btn-primary addProductFormBtn" onClick={updateProductToDB}>Uppdatera</button>
+                  <button className="btn btn-primary addProductFormBtn">Uppdatera</button>
                 </div>
               </form>
             </div>
