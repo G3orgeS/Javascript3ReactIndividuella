@@ -1,45 +1,49 @@
 import React, { useState } from 'react';
 import './edit.scss';
+import '../../form/addProductForm/addProductForm.scss'
 import { useDispatch, useSelector } from 'react-redux';
 
 const Edit = ({ product }) => {
-
-  const [imageURL, setImageURL] = useState('');
-  const [imageURL1, setImageURL1] = useState('');
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [productData, setProductData] = useState({
-
-    title: '',
-    category: '',
-    price: '',
-    shortDescription: '',
-    description: '',
-    imageURL: []
-  })
+    title:            product.title,
+    category:         product.category,
+    price:            product.price,
+    shortDescription: product.shortDescription,
+    description:      product.description,
+    imageURL:         product.imageURL,
+  });
 
   const handleChange = e => {
-    const { id, value } = e.target
-    setProductData(form => {
-      return {
-        ...form,
-        [id]: value
-      }
-    })
-  }
+    const { id, value } = e.target;
+    setProductData(form => ({
+      ...form,
+      [id]: value,
+    }));
+  };
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    const data = {
-      ...productData,
-      imageURL: [imageURL1],
-      price: +productData.price
+  const updateProductToDB = async () => {
+    try {
+      const docRef = doc(db, 'products', product.id); 
+
+      await updateDoc(docRef, {
+        title:              products.title,
+        category:           products.category,
+        price:              products.price,
+        shortDescription:   products.shortDescription,
+        description:        products.description,
+        imageURL:           products.imageURL,
+      });
+
+      dispatch(updateProduct(products));
+
+
+      navigate('/productDetails/:id');
+    } catch (error) {
+      console.log(error);
     }
-
-    dispatch(addProduct(data))
-  }
-
+  };
 
   return (
     <>
@@ -55,9 +59,9 @@ const Edit = ({ product }) => {
             <h3>{product.title}</h3>
           </div>
           <div className='text-wrapper'>
-            <div className='editcenter editProductform'>
+            <div className=' editProductform'>
               <h1 className='text-center'>Uppdatera Produkten</h1>
-              <form noValidate onSubmit={handleSubmit}>
+              <form>
                 <div className="input-group">
                   <label htmlFor="name" className="form-label">Product Title:</label>
                   <input type="text" className="form-control" id='title' value={productData.title} onChange={handleChange} />
@@ -80,10 +84,10 @@ const Edit = ({ product }) => {
                 </div>
                 <div className="input-group">
                   <label htmlFor="imageURL1" className="form-label">Image Url 1:</label>
-                  <input type="text" className="form-control" id='imageURL1' value={imageURL1} onChange={(e) => setImageURL1(e.target.value)} />
+                  <input type="text" className="form-control" id='imageURL1'  onChange={(e) => setImageURL(e.target.value)} />
                 </div>
                 <div className='center'>
-                  <button className="btn btn-primary addProductFormBtn">Uppdatera</button>
+                  <button className="btn btn-primary addProductFormBtn" onClick={updateProductToDB}>Uppdatera</button>
                 </div>
               </form>
             </div>

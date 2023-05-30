@@ -16,18 +16,6 @@ function EditProduct({ products }) {
       {error && <p>{error}</p>}
     </div>
   )
-//   let matches = []
-//   const category = product.category
-
-  // Searching the products array categories to find search word
-//   const productSerachFunction = () => {
-//     products.forEach(product => {
-//       if (product.category.includes(category)) {
-//         return matches.push(product)
-//       }
-//     });
-//   }
-//   productSerachFunction()
 
   return (
     <>

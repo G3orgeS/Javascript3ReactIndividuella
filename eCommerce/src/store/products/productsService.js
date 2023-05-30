@@ -22,6 +22,9 @@ const getAllAsync = async (col) => {
 
   return products
 }
+const updateProductAsync = async (id, updatedData) => {
+  await updateDoc(doc(db, 'products', id), updatedData)
+}
 
 const deleteProductAsync = async (id) => {
   return await deleteDoc(doc(db, 'products', id))
