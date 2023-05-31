@@ -3,7 +3,7 @@ import './hero.scss'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/Ai'
 import { Link } from 'react-router-dom'
 import React from 'react'
-import img1 from '../../../img/img1.png'
+import img1 from '../../img/img1.png'
 
 const Hero = () => {
   return (

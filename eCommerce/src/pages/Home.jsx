@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Hero from '../components/home/hero/Hero'
+import Hero from '../components/hero/Hero'
 import '../scss/index.scss'
 
 const Home = ({ products }) => {

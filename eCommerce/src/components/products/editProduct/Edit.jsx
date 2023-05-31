@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './edit.scss';
-import '../../form/addProductForm/addProductForm.scss'
+import '../../addProductForm/addProductForm.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../../firebase/config';

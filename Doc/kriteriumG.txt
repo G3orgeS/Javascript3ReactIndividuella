@@ -1,32 +1,32 @@
 
 All sidor som behövs för din lösning ska vara byggda med React.js 
-och du ska använda react-router för att navigera mellan dessa.
+och du ska använda react-router för att navigera mellan dessa. (klar)
 
 Alla variabelnamn och funktioners 
-namn ska vara på engelska.
+namn ska vara på engelska. (klar)
 
 Du ska kommentera i din kod där 
 det kan vara lämpligt och alla kommentarer 
-skall vara skrivna på engelska.
+skall vara skrivna på engelska. (klar)
 
 Admin Login (
 Man ska kunna logga in på sidan med 
-ett administratörs konto.
+ett administratörs konto. (klar)
 )
 
 Pages ProductList (
 Du ska lista upp alla produkter i 
-en förenklad lista på en egen sida.
+en förenklad lista på en egen sida. (klar)
 )
 
 Pages ProductDetail (
 - Man ska kunna få upp information om en 
-  enskild produkt på en separat sida.
+  enskild produkt på en separat sida. (klar)
 )
 
 Pages CRUD (
 - Man ska kunna ändra på och uppdatera 
-  en produkt på databasen.
-- Man ska kunna ta bort en produkt från databasen.
-- Man ska kunna lägga till en ny produkt på databasen.
+  en produkt på databasen. (klar)
+- Man ska kunna ta bort en produkt från databasen. (klar)
+- Man ska kunna lägga till en ny produkt på databasen. (klar)
 )

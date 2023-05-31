@@ -10,9 +10,7 @@ import Products from './pages/Products'
 import ProductDetails from './pages/ProductDetails'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import UserProfile from './pages/UserProfile'
 import AddProduct from './pages/AddProducts'
-import UserOrders from './pages/UserOrders'
 import EditProduct from './pages/EditProduct'
 import DeleteProduct from './pages/DeleteProduct'
 
@@ -78,14 +76,6 @@ const App = () => {
         {
           path: 'login',
           element: <Login setIsLoggedIn={setIsLoggedIn} />
-        },
-        {
-          path: 'userprofile',
-          element: <UserProfile />
-        },
-        {
-          path: 'userorders',
-          element: <UserOrders />
         },
         {
           path: 'register',

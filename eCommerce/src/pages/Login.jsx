@@ -10,7 +10,7 @@ const Login = () => {
 
   const { user, loading, error } = useSelector(state => state.auth)
   const dispatch = useDispatch()
-  const [submitted, setSubmitted] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -21,25 +21,20 @@ const Login = () => {
     setFormData(data => ({ ...data, [id]: value }))
   }
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault()
     console.log(formData)
-    await dispatch(loginUser(formData))
-    setSubmitted(true)
+    dispatch(loginUser(formData))
+    navigate('/')
   }
-
-  useEffect(() => {
-    if (submitted && user) {
-      navigate('/')
-    }
-  }, [submitted, user])
 
   return (
     <div className='logincenter' >
       <form className='addProductform' noValidate onSubmit={handleSubmit}>
-        <h1 className='text-center my-5'>Login to your account</h1>
+        <h1 className='text-center my-5'>Login as an admin</h1>
         <div className="center">
-          <p className='centerp' >Not a member? <Link className='linkstylelogin' to="/register">Register</Link> instead</p>
+        {isLoggedIn && <p className='text-success'>Du är inloggad.</p>}
+          <p className='centerp' >Not a admin? <Link className='linkstylelogin' to="/register">Register</Link> instead</p>
           <label htmlFor="email" className='form-label-login'>Email address</label>
           <input type="email" className='form-control' id='email' value={formData.email} onChange={handleChange} />
         </div>

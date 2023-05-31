@@ -1,6 +1,6 @@
 import React from 'react'
 import '../grid.scss'
-import Product from '../../../product/Product'
+import Product from '../../product/Product'
 
 const LargeGrid = ({ products }) => {
   

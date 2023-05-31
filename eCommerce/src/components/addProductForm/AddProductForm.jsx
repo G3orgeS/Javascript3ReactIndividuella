@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addProduct } from '../../../store/products/productsSlice'
+import { addProduct } from '../../store/products/productsSlice'
 import './addProductForm.scss'
 
 const AddProductForm = () => {
