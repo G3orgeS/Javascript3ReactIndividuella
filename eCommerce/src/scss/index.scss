@@ -10,3 +10,8 @@ body {
 .homepagedivimg{
     height: 50vh;
 }
+.orderList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

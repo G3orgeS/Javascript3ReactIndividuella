@@ -1,0 +1,46 @@
+.centerparent {
+    display: flex;
+    height: 20rem;
+    justify-content: center;
+  }
+  
+  .orderliststyle {}
+  
+  .imgstyleorder {
+    height: 5rem;
+    width: 5rem;
+    padding-right: 1rem;
+  }
+  
+  .orderwrapper {
+    gap: 10rem;
+    background-color: rgb(211, 211, 211);
+    margin-bottom: 1rem;
+    padding: 2rem;
+    border-radius: 2rem;
+    width: 70vw;
+    height: 10rem;
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .orderwrapper1 {
+
+
+    display: flex;
+    height: 20rem;
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .orderprice {
+    padding-bottom: 2rem;
+    text-align: center; 
+  }
+  
+  .imgwrapper {
+    display: flex; 
+    justify-content: center; 
+    margin-top: 1rem; 
+  }
+  

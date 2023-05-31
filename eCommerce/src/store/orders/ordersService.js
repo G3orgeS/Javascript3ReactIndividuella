@@ -9,7 +9,7 @@ const getAllAsync = async (col) => {
   querySnapshot.forEach(doc => {
     orders.push({id: doc.id, ...doc.data()})
   })
-
+   
   return orders
 }
 

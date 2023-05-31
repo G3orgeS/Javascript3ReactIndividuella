@@ -62,3 +62,11 @@ a {
     height: 2rem;
     width: 2rem;
 }
+#wide {
+    display: flex;
+    padding: 1rem;
+}
+.orderparent {
+    display: flex;
+    justify-content: center;
+}

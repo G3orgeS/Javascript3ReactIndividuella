@@ -6,7 +6,7 @@ const initialState = {
   error: null,
   loading: false
 }
-
+   
 export const getOrders = createAsyncThunk('order-list/getAll', async (_, thunkAPI) => {
   try {
     return await ordersService.getAllAsync('orders')

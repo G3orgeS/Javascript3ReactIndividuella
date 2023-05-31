@@ -16,7 +16,7 @@ import DeleteProduct from './pages/DeleteProduct'
 // import OrderDetail from './pages/OrderDetail'
 import OrderList from './pages/OrderList'
 import UserOrders from './pages/OrderDetail'
-
+  
 const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -78,7 +78,7 @@ const App = () => {
           element: <OrderList />
         },
         {
-          path: 'orderdetail',
+          path: 'orderdetail/:id',
           element: <UserOrders  />
         },
         {
