@@ -16,7 +16,7 @@ const useDoc = (collection, id) => {
       const docRef = doc(db, collection, id)
       const docSnapshot = await getDoc(docRef)
 
-      if (!docSnapshot.exists()) {
+      if(!docSnapshot.exists()) {
         setLoading(false)
         setError('Could not find that document')
       }

@@ -13,6 +13,9 @@ import Register from './pages/Register'
 import AddProduct from './pages/AddProducts'
 import EditProduct from './pages/EditProduct'
 import DeleteProduct from './pages/DeleteProduct'
+// import OrderDetail from './pages/OrderDetail'
+import OrderList from './pages/OrderList'
+import UserOrders from './pages/OrderDetail'
 
 const App = () => {
 
@@ -30,7 +33,6 @@ const App = () => {
   useEffect(() => {
     dispatch(getProducts())
   }, [])
-
   const { products, loading, error } = useSelector(state => state.products)
 
   const router = createBrowserRouter([
@@ -71,7 +73,14 @@ const App = () => {
           path: 'addProduct',
           element: <AddProduct />,
         },
-
+        {
+          path: 'orderlist',
+          element: <OrderList />
+        },
+        {
+          path: 'orderdetail',
+          element: <UserOrders  />
+        },
         {
           path: 'login',
           element: <Login setIsLoggedIn={setIsLoggedIn} />

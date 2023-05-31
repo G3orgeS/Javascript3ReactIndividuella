@@ -15,6 +15,7 @@ const Navbar = ({ products, isLoggedIn, setIsLoggedIn }) => {
           <>
             <li><NavLink className='nav-link lowercase opacity' to='/login'>Login</NavLink></li>
             <li><NavLink className='nav-link lowercase opacity' to='/register'>Register</NavLink></li>
+            <li><NavLink className='nav-link lowercase opacity' to='/orderlist'>Orders</NavLink></li>
           </>
         </ul>
       </nav>
