@@ -51,7 +51,6 @@ export const useFetch = (url, options) => {
   return { data, loading, error }
 }
 
-
 export const useFetchAmount = (url, options, amount) => {
 
   const [data, setData] = useState(null)

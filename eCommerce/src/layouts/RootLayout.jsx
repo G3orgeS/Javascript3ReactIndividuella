@@ -7,9 +7,9 @@ const RootLayout = ({ products, isLoggedIn, setIsLoggedIn }) => {
   return (
     <>
       <Navbar />
-      <div className="container">
-        <Outlet />
-      </div>
+        <div className="container">
+          <Outlet />
+        </div>
       <Footer />
     </>
   )

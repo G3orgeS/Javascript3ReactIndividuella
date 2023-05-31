@@ -2,9 +2,8 @@ import './product.scss'
 import { Link, NavLink } from 'react-router-dom'
 import { FiEdit2, FiDelete } from 'react-icons/fi';
 
-
 const Product = ({ product }) => {
-  
+
   return (
     <Link to={`/productDetails/${product.id}`}>
       <div className='productstylebox'>

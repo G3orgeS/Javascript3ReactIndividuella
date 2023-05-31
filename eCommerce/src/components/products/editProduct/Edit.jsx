@@ -55,9 +55,8 @@ const Edit = ({ product }) => {
       navigate('/productDetails/:id');
     } catch (error) {
       console.log(error);
-    }
-  };
-
+    }};
+    
   return (
     <>
       <div className='details-wrapper'>

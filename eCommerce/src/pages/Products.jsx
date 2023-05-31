@@ -15,8 +15,8 @@ function Products({ products }) {
     <>
       {
         products.length > 0
-          ? <LargeGrid key={products._id} products={products} />
-          : <h2>No products to show</h2>
+        ? <LargeGrid key={products._id} products={products} />
+        : <h2>No products to show</h2>
       }
     </>
   )

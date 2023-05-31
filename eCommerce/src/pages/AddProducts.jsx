@@ -3,7 +3,7 @@ import AddProductForm from '../components/addProductForm/AddProductForm'
 
 const AddProduct = () => {
   return (
-        <AddProductForm />
+    <AddProductForm />
   )
 }
 

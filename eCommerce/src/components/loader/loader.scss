@@ -2,7 +2,6 @@
   position: fixed;
   inset: 0;
   z-index: 1;
-
 .loader {
   margin: 5rem auto;
   width: 80px;
@@ -13,7 +12,6 @@
   border-top-color: #00000055;
   animation: spin .8s ease infinite;
   }
-
   @keyframes spin {
     from {
       rotate: 0deg;

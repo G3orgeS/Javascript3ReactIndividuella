@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Hero from '../components/hero/Hero'
 import '../scss/index.scss'
 
-const Home = ({ products }) => {
+const Home = () => {
 
   return (
     <Hero />

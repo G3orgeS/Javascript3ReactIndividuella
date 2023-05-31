@@ -23,7 +23,7 @@ const Register = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    if(formData.password != formData.confirmPassword) {
+    if (formData.password != formData.confirmPassword) {
       dispatch(setError("the passwords don't match"))
       return
     }
@@ -34,34 +34,34 @@ const Register = () => {
   }
 
   useEffect(() => {
-    if(submitted && user) {
+    if (submitted && user) {
       navigate('/')
     }
   }, [submitted, user])
 
   return (
     <div>
- <div className='logincenter'>
-      <form className='addProductform' noValidate onSubmit={handleSubmit}>
-      <h1 className='text-center my-5'>Register a new admin</h1>
-        <div className="center">
-      <p className='centerp'>Already an admin? <Link className='linkstylelogin' to="/login">Login</Link> instead</p>
-          <label htmlFor="email" className='form-label-register'>Email address</label>
-          <input type="email" className='form-control' id='email' value={formData.email} onChange={handleChange} />
-        </div>
-        <div className="center">
-          <label htmlFor="password" className='form-label-register'>Password</label>
-          <input type="password" className='form-control' id='password' value={formData.password} onChange={handleChange} />
-        </div>
-        <div className="center">
-          <label htmlFor="confirmPassword" className='form-label-register'>Confirm Password</label>
-          <input type="password" className='form-control' id='confirmPassword' value={formData.confirmPassword} onChange={handleChange} />
-        <button className='addProductFormBtn'>Register</button>
-        </div>
-        { loading && <p>Loading...</p> }
-        { error && <p className='text-danger'>{ error }</p> }
-      </form>
-    </div>
+      <div className='logincenter'>
+        <form className='addProductform' noValidate onSubmit={handleSubmit}>
+          <h1 className='text-center my-5'>Register a new admin</h1>
+          <div className="center">
+            <p className='centerp'>Already an admin? <Link className='linkstylelogin' to="/login">Login</Link> instead</p>
+            <label htmlFor="email" className='form-label-register'>Email address</label>
+            <input type="email" className='form-control' id='email' value={formData.email} onChange={handleChange} />
+          </div>
+          <div className="center">
+            <label htmlFor="password" className='form-label-register'>Password</label>
+            <input type="password" className='form-control' id='password' value={formData.password} onChange={handleChange} />
+          </div>
+          <div className="center">
+            <label htmlFor="confirmPassword" className='form-label-register'>Confirm Password</label>
+            <input type="password" className='form-control' id='confirmPassword' value={formData.confirmPassword} onChange={handleChange} />
+            <button className='addProductFormBtn'>Register</button>
+          </div>
+          {loading && <p>Loading...</p>}
+          {error && <p className='text-danger'>{error}</p>}
+        </form>
+      </div>
     </div>
   )
 }

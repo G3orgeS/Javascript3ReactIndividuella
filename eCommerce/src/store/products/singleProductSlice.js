@@ -43,5 +43,4 @@ export const singleProductSlice = createSlice({
 })
 
 export const { clearProduct } = singleProductSlice.actions
-
 export default singleProductSlice.reducer

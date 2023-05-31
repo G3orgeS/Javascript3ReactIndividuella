@@ -7,7 +7,6 @@ const initialState = {
     error: null,
     authIsReady: false
 }
-
 export const registerUser = createAsyncThunk('auth/register', async (formData, thunkAPI) => {
     try {
         return await authService.signup(formData.email, formData.password)
@@ -15,7 +14,6 @@ export const registerUser = createAsyncThunk('auth/register', async (formData, t
         return thunkAPI.rejectWithValue(err.message)
     }
 })
-
 export const loginUser = createAsyncThunk('auth/login', async (formData, thunkAPI) => {
     try {
         return await authService.login(formData.email, formData.password)
@@ -23,7 +21,6 @@ export const loginUser = createAsyncThunk('auth/login', async (formData, thunkAP
         return thunkAPI.rejectWithValue(err.message)
     }
 })
-
 export const logoutUser = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     try {
         return await authService.logout()

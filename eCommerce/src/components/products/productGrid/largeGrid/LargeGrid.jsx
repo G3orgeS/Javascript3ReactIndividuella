@@ -5,7 +5,6 @@ import Product from '../../product/Product'
 const LargeGrid = ({ products }) => {
   
   return (
-
     <div className='grid-component'>
         <div className='grid-container'>
           <div className="style">

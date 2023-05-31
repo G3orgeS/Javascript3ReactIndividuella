@@ -40,9 +40,6 @@ export const productsSlice = createSlice({
         state.loading = false
         state.error = action.payload
       })
-
-
-
       .addCase(getProducts.pending, (state) => {
         state.loading = true
       })

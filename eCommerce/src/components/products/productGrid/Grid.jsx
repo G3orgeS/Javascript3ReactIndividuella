@@ -15,7 +15,6 @@ const Grid = ({ displayProducts }) => {
         }
       </div>
     </div>
-
   )
 }
 export default Grid

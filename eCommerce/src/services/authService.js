@@ -2,7 +2,6 @@ class AuthService {
   constructor() {
     this.authenticated = false
   }
-
   async login() {
     this.authenticated = true
 

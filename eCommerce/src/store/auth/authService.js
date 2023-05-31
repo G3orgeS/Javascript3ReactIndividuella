@@ -1,7 +1,6 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import { auth } from '../../firebase/config'
 
-
 const signup = async (email, password) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password)
     const user = {
@@ -21,7 +20,6 @@ const login = async (email, password) => {
     }
     return user
 }
-
 
 const logout = async () => {
     return await signOut(auth)

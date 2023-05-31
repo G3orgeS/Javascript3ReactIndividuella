@@ -14,7 +14,6 @@ const Delete = ({ product }) => {
     await deleteDoc(doc(db, 'products', product.id))
     navigate('/products')
   }
-
   return (
     <>
       <div className='details-wrapper'>

@@ -33,7 +33,7 @@ const Login = () => {
       <form className='addProductform' noValidate onSubmit={handleSubmit}>
         <h1 className='text-center my-5'>Login as an admin</h1>
         <div className="center">
-        {isLoggedIn && <p className='text-success'>Du är inloggad.</p>}
+          {isLoggedIn && <p className='text-success'>Du är inloggad.</p>}
           <p className='centerp' >Not a admin? <Link className='linkstylelogin' to="/register">Register</Link> instead</p>
           <label htmlFor="email" className='form-label-login'>Email address</label>
           <input type="email" className='form-control' id='email' value={formData.email} onChange={handleChange} />

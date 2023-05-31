@@ -17,9 +17,7 @@ function DeleteProduct({ products }) {
     )
 
     return (
-        <>
-            <Delete key={'detailsProductKey'} product={product} />
-        </>
+        <Delete key={'detailsProductKey'} product={product} />
     )
 }
 

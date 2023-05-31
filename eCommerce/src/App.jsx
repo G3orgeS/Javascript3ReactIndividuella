@@ -46,7 +46,6 @@ const App = () => {
               ? <Home key={products._id} products={products} />
               : <h2>No products to show</h2>
           }</>
-
         },
         {
           index: true,
@@ -113,5 +112,4 @@ const App = () => {
     </>
   )
 }
-
 export default App
