@@ -5,36 +5,48 @@ import { loginUser } from '../store/auth/authSlice'
 import '../scss/login.scss'
 
 const Login = () => {
-
   const navigate = useNavigate()
 
+  // Retrieve user, loading, and error states from the Redux store
   const { user, loading, error } = useSelector(state => state.auth)
   const dispatch = useDispatch()
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Define isLoggedIn state and formData state
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   })
 
+  // Handle form input change
   const handleChange = e => {
     const { id, value } = e.target
     setFormData(data => ({ ...data, [id]: value }))
   }
 
+  // Handle form submission
   const handleSubmit = e => {
     e.preventDefault()
     console.log(formData)
     dispatch(loginUser(formData))
-    navigate('/')
+    setIsLoggedIn(true)
+    navigate('/login')
   }
 
+  // Perform effect when isLoggedIn and user states change
+  useEffect(() => {
+    if (isLoggedIn && user) {
+      navigate('/')
+    }
+  }, [isLoggedIn, user])
+
   return (
-    <div className='logincenter' >
+    <div className='logincenter'>
       <form className='addProductform' noValidate onSubmit={handleSubmit}>
-        <h1 className='text-center my-5'>Login as an admin</h1>
+        <h1 className='text-center my-5'>Login</h1>
         <div className="center">
-          {isLoggedIn && <p className='text-success'>Du är inloggad.</p>}
-          <p className='centerp' >Not a admin? <Link className='linkstylelogin' to="/register">Register</Link> instead</p>
+          <p className='centerp'>Can't log in? <Link className='linkstylelogin' to="/register">Register</Link> instead</p>
+          <p className="centerp">Obs. Du måste vara inloggad för att få tillgång till sidan</p>
           <label htmlFor="email" className='form-label-login'>Email address</label>
           <input type="email" className='form-control' id='email' value={formData.email} onChange={handleChange} />
         </div>

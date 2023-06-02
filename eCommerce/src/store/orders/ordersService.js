@@ -1,5 +1,5 @@
 import { db } from "../../firebase/config"
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, doc } from 'firebase/firestore'
 
 const getAllAsync = async (col) => {
   const colRef = collection(db, col)
@@ -12,9 +12,20 @@ const getAllAsync = async (col) => {
    
   return orders
 }
+const getByIdAsync = async (id) => {
+  const orderRef = doc(db, "orders", id);
+  const orderSnapshot = await getDocs(orderRef);
+
+  if (orderSnapshot.exists()) {
+    return { id: orderSnapshot.id, ...orderSnapshot.data() };
+  } else {
+    throw new Error(`Order with ID ${id} does not exist.`);
+  }
+};
 
 const ordersService = {
-  getAllAsync
+  getAllAsync,
+  getByIdAsync
 }
 
   

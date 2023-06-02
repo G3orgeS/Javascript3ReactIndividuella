@@ -16,16 +16,29 @@ import DeleteProduct from './pages/DeleteProduct'
 // import OrderDetail from './pages/OrderDetail'
 import OrderList from './pages/OrderList'
 import UserOrders from './pages/OrderDetail'
-  
+import { authReady } from './store/auth/authSlice'
+import { auth } from './firebase/config'
+import { onAuthStateChanged } from 'firebase/auth'
+import { ProtectedRoute } from './routes/ProtectedRoute'
+
 const App = () => {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+  const { authIsReady } = useSelector(state => state.auth)
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('accessToken')
-    if (loggedInUser) {
-      setIsLoggedIn(true)
-    }
+    onAuthStateChanged(auth, (_user) => {
+      // console.log(_user)
+      let user = null
+
+      if(_user) {
+        user = {
+          uid: _user.uid,
+          email: _user.email
+        }
+      }
+
+      dispatch(authReady(user))
+
+    })
   }, [])
 
   const dispatch = useDispatch()
@@ -38,7 +51,7 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <RootLayout key={products._id} products={products} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />,
+      element: <RootLayout key={products._id} products={products} />,
       errorElement: <Error />,
       children: [
         {
@@ -55,61 +68,55 @@ const App = () => {
         },
         {
           path: 'products',
-          element: <>{
+          element: <ProtectedRoute>{
             products.length > 0
               ? <Products key={products.id} products={products} />
               : <h2>No products to show</h2>
-          }</>
+          }</ProtectedRoute>
         },
         {
           path: 'productDetails/:id',
-          element: <>{
+          element: <ProtectedRoute>{
             products.length > 0
               ? <ProductDetails key={products.id} products={products} />
               : <h2>No products to show</h2>
-          }</>
+          }</ProtectedRoute>
         },
         {
           path: 'addProduct',
-          element: <AddProduct />,
+          element: <ProtectedRoute><AddProduct /></ProtectedRoute>,
         },
         {
           path: 'orderlist',
-          element: <OrderList />
+          element: <ProtectedRoute><OrderList /></ProtectedRoute> 
         },
         {
           path: 'orderdetail/:id',
-          element: <UserOrders  />
+          element: <ProtectedRoute><UserOrders  /></ProtectedRoute>
         },
         {
           path: 'login',
-          element: <Login setIsLoggedIn={setIsLoggedIn} />
+          element: <Login  />
         },
         {
           path: 'register',
           element: <Register />
         },
-
-        {
-          path: 'products',
-          element: <Products />
-
-        },
         {
           path: 'editproduct/:id',
-          element: <>{
+          element: <ProtectedRoute>{
             products.length > 0
               ? <EditProduct />
               : <h2>No products to show</h2>
-          }</>
+          }</ProtectedRoute>
         },
         {
           path: 'deleteproduct/:id',
-          element: <>{
+          element: <ProtectedRoute>{
             products.length > 0
               ? <DeleteProduct key={products.id} products={products} />
               : <h2>No products to show</h2>
-          }</>
+          }</ProtectedRoute>
         },
       ]
     }

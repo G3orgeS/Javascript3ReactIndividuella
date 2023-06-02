@@ -9,15 +9,13 @@ const OrderGrid = ({ orders }) => {
     orders.products.forEach(product => {
         products.push(product)
     })
-
     return (
-        <Link to={`/orderDetail/${orders.userId}`}>
+        <Link key={orders.id} to={`/orderDetail/${orders.userId}`}>
                 <div className='orderwrapper'>
                     <div className="textwrap">
-                        <h2>Order number: {orders.orderId}</h2>
+                        <h2>Order number: {orders.userId}</h2>
                         <h2>Status: {orders.status}</h2>
                         <h2>Ordern kostar: {orders.totalPrice}</h2>
-                        <p><b>Quantity:</b> {orders.quantity}</p>
                         </div>
                         <div className="imgwrapper">
                             {products.map((product) => (

@@ -6,10 +6,12 @@ import { useParams } from 'react-router-dom'
 import Edit from '../components/products/editProduct/Edit'
 
 function EditProduct() {
+  const { id } = useParams() // Retrieve the id from the URL parameters
 
-  const { id } = useParams()
-
+  // Fetch product data using the useDoc custom hook
   const { data: product, error, loading } = useDoc('products', id)
+
+  // If the product data is not available yet, render a loader or error message
   if (!product) return (
     <div className='loaderdivraise'>
       {loading && <Loader />}
@@ -17,6 +19,7 @@ function EditProduct() {
     </div>
   )
 
+  // Render the Edit component with the product data
   return (
     <>
       <Edit product={product} />

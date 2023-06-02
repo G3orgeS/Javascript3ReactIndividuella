@@ -5,19 +5,23 @@ import Loader from '../components/loader/Loader'
 import { useParams } from 'react-router-dom'
 
 function ProductDetails({ products }) {
+  const { id } = useParams() // Retrieve the product ID from the URL parameters
 
-  const { id } = useParams()
+  const { data: product, error, loading } = useDoc('products', id) // Fetch the product data using the custom hook useDoc
 
-  const { data: product, error, loading } = useDoc('products', id)
-  if (!product) return (
-    <div className='loaderdivraise'>
-      {loading && <Loader />}
-      {error && <p>{error}</p>}
-    </div>
-  )
+  if (!product) {
+    // Display loader while loading or error message if an error occurs
+    return (
+      <div className='loaderdivraise'>
+        {loading && <Loader />}
+        {error && <p>{error}</p>}
+      </div>
+    )
+  }
 
   return (
     <>
+      {/* Render the product details */}
       <Details key={'detailsProductKey'} product={product} />
     </>
   )

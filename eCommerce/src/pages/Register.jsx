@@ -43,9 +43,9 @@ const Register = () => {
     <div>
       <div className='logincenter'>
         <form className='addProductform' noValidate onSubmit={handleSubmit}>
-          <h1 className='text-center my-5'>Register a new admin</h1>
+          <h1 className='text-center my-5'>Register </h1>
           <div className="center">
-            <p className='centerp'>Already an admin? <Link className='linkstylelogin' to="/login">Login</Link> instead</p>
+            <p className='centerp'><Link className='linkstylelogin' to="/login">Login</Link> instead</p>
             <label htmlFor="email" className='form-label-register'>Email address</label>
             <input type="email" className='form-control' id='email' value={formData.email} onChange={handleChange} />
           </div>
