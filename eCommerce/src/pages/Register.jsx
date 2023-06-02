@@ -30,7 +30,6 @@ const Register = () => {
 
     await dispatch(registerUser(formData))
     setSubmitted(true)
-    console.log('det gick att registrera ett konto')
   }
 
   useEffect(() => {
